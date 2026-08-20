@@ -1,4 +1,5 @@
 import { Link } from 'react-router'
+import './header.css'
 
 function Header() {
     return (
@@ -6,7 +7,9 @@ function Header() {
 
             <div className="left-section">
                 <Link to="/" className="header-link">
-                    <img className="logo" src="images/logo-white.png" />
+                    <div className='logo-container'>
+                        <img className="logo" src="images/2_title.png" />
+                    </div>
                     <img className="mobile-logo" src="images/mobile-logo-white.png" />
                 </Link>
             </div>

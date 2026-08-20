@@ -1,7 +1,7 @@
 import Homepage from './pages/Homepages'
 import { Routes, Route } from 'react-router'
 import Orders from './pages/Orders'
-import Checkout from './pages/Checkout'
+import Checkout from './pages/Checkout/Checkout'
 import './App.css'
 
 function App() {
