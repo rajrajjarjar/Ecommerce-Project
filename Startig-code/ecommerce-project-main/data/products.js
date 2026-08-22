@@ -143,6 +143,65 @@ export const products = [
     keywords: ["bedroom", "curtains", "home"]
   },
   {
+    id: "a81f2d3c-7b42-4e91-9c16-32a7b5d84e01",
+    image: "images/products/wireless-headphones.jpg",
+    name: "Wireless Bluetooth Headphones",
+    rating: {
+      stars: 4.5,
+      count: 1842
+    },
+    priceCents: 2499,
+    keywords: ["headphones", "audio", "electronics"]
+  },
+
+  {
+    id: "c42e8f71-15b6-4a93-bd28-61f5e9037c24",
+    image: "images/products/stainless-steel-water-bottle.jpg",
+    name: "Stainless Steel Water Bottle",
+    rating: {
+      stars: 4.5,
+      count: 967
+    },
+    priceCents: 1299,
+    keywords: ["bottle", "kitchen", "fitness"]
+  },
+
+  {
+    id: "f73a1c95-82d4-46be-a719-54c6e2b80315",
+    image: "images/products/led-desk-lamp.jpg",
+    name: "LED Desk Lamp",
+    rating: {
+      stars: 4,
+      count: 743
+    },
+    priceCents: 1599,
+    keywords: ["lamp", "lighting", "desk"]
+  },
+
+  {
+    id: "b29d6e48-3f71-4c85-a026-97e5d1a84263",
+    image: "images/products/laptop-backpack.jpg",
+    name: "Laptop Backpack",
+    rating: {
+      stars: 4.5,
+      count: 1256
+    },
+    priceCents: 2999,
+    keywords: ["backpack", "laptop", "bags"]
+  },
+
+  {
+    id: "e56c3a17-94b2-4d80-8f61-27a9c5b73104",
+    image: "images/products/mechanical-keyboard.jpg",
+    name: "Mechanical Gaming Keyboard",
+    rating: {
+      stars: 5,
+      count: 2143
+    },
+    priceCents: 3499,
+    keywords: ["keyboard", "gaming", "electronics"]
+  },
+  {
     id: "82bb68d7-ebc9-476a-989c-c78a40ee5cd9",
     image: "images/products/women-summer-jean-shorts.jpg",
     name: "Women's Summer Jean Shorts",
