@@ -1,9 +1,8 @@
 const express = require('express')
 const app = express();
-app.use('/', (req, res) => {
-    res.send('<h1>Hey raj,welcome back to backend</h1>')
+const router = require('./routes/routes');
 
-})
+app.use('/api/v1', router);
 app.listen(3000, () => {
     console.log("super saiyannnnn independent")
 })
