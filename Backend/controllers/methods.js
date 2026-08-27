@@ -1,10 +1,17 @@
-const getAllProducts = (req, res) => {
-    res.send('<h1>YO BOY WELCOME TO CONTROLLERS</h1>');
+const Product = require('../models/model_data');
+
+
+const getAllProducts = async (req, res) => {
+    const Result = await Product.find();
+    res.status(200).json(Result)
+
+
 
 }
 const addToCart = (req, res) => {
-    res.send('<h1>add this to the cart</h1>')
+    res.send("nncn")
 }
+
 module.exports = {
     getAllProducts,
     addToCart

@@ -3,11 +3,16 @@ const app = express();
 const router = require('./routes/routes');
 const connectDb = require('./db/connect');
 const errorHandler = require('./middleware/Error-Handler')
+const notFound = require('./middleware/notFound');
+
+
+
 
 require('dotenv').config();
 
 
 //normal middleware
+app.use(express.json());
 
 app.use('/api/v1', router);
 
@@ -23,6 +28,8 @@ app.use('/api/v1', router);
 
 //error middleware
 app.use(errorHandler);
+app.use(notFound);
+
 
 
 
