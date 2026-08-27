@@ -2,11 +2,13 @@
 const user = require('../models/model_user');
 const validator = require("validator");
 const { badRequest } = require('../errors/index_error');
+const bcrypt = require("bcrypt");
 
 require('dotenv').config();
 
 const register = async (req, res) => {
     const { name, Email, password, role } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
     if (!name) {
         throw new badRequest("Please provide name to register");
 
@@ -20,7 +22,7 @@ const register = async (req, res) => {
     const newUser = await user.create({
         name: name,
         Email: Email,
-        password: password,
+        password: hashedPassword,
         role: role
 
     })
