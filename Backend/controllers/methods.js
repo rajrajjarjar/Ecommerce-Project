@@ -1,4 +1,5 @@
 const Product = require('../models/model_data');
+const user = require('../models/model_user')
 
 
 const getAllProducts = async (req, res) => {
@@ -12,7 +13,14 @@ const getAllProducts = async (req, res) => {
 
 }
 const addToCart = (req, res) => {
-    res.send("nncn")
+
+    const { id, Email } = req.user
+    const product_id = req.body
+
+
+
+
+
 }
 
 module.exports = {
