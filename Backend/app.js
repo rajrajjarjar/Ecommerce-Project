@@ -10,6 +10,15 @@ const notFound = require('./middleware/notFound');
 
 require('dotenv').config();
 
+const cors = require("cors");
+
+
+
+app.use(cors({
+    origin: "http://localhost:5173"
+}));
+
+app.use(express.json());
 
 //normal middleware
 app.use(express.json());

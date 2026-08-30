@@ -1,7 +1,14 @@
 import { Link } from 'react-router'
+import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import './header.css'
 
 function Header() {
+    const [mode, setMode] = useState("login");
+    const isLogin = mode === "login";
+    const token = localStorage.getItem("token");
+    const navigate = useNavigate();
+
     return (
         <div className="header">
 
@@ -30,19 +37,9 @@ function Header() {
             </div>
 
             <div className="right-section">
+                <button></button>
 
-                <Link className="orders-link header-link" to="/orders">
-                    <span className="orders-text">Orders</span>
-                </Link>
 
-                <Link className="cart-link header-link" to="/checkout">
-                    <img
-                        className="cart-icon"
-                        src="images/icons/cart-icon.png"
-                    />
-                    <div className="cart-quantity">3</div>
-                    <div className="cart-text">Cart</div>
-                </Link>
 
             </div>
         </div>

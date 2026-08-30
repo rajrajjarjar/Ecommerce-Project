@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Eye, EyeOff, ArrowRight, ShoppingBag, ShieldCheck } from "lucide-react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 // ============================================================================
 // SimpleShopAuth
@@ -22,6 +25,7 @@ export default function SimpleShopAuth() {
   // "login" | "register" — controls which form fields + copy are shown.
   const [mode, setMode] = useState("login");
   const isLogin = mode === "login";
+  const navigate = useNavigate();
 
   // Single form-state object for both modes. `name` is simply unused/ignored
   // when mode === "login", so we don't need two separate state objects.
@@ -36,21 +40,47 @@ export default function SimpleShopAuth() {
 
   // Placeholder submit handler. Replace the console.log with your real
   // fetch/axios call to the backend auth routes you already have running.
-  const handleSubmit = () => {
-    const payload = isLogin
-      ? { email: form.email, password: form.password }
-      : { name: form.name, email: form.email, password: form.password };
+  const handleSubmit = async () => {
+    try {
+      if (isLogin) {
+        const response = await axios.post(
+          "http://localhost:3000/api/v1/auth/login",
+          {
+            Email: form.email,
+            password: form.password
+          }
+        );
 
-    console.log(`[${mode.toUpperCase()}] submitting:`, payload);
+        localStorage.setItem("token", response.data.token);
+        console.log("login, its done bro");
 
-    // Example of what this will probably look like once wired up:
-    // const res = await fetch(`/api/auth/${mode}`, {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(payload),
-    // });
+        // Navigate to the homepage
+        navigate("/");
+
+      } else {
+        const response = await axios.post(
+          "http://localhost:3000/api/v1/auth/register", // Note: make sure this matches your backend route exactly
+          {
+            name: form.name,
+            Email: form.email,
+            password: form.password
+          }
+        );
+
+        console.log(response.data.message);
+
+        // Flip the form back to login mode
+        setMode("login");
+
+        // Clear the password field so they can type it fresh for login
+        setForm(prev => ({ ...prev, password: "" }));
+      }
+
+    } catch (error) {
+      console.log(error.response?.data || error.message);
+      // Optional: alert(error.response?.data?.message || "An error occurred");
+    }
   };
-
   // Lets the user hit "Enter" in the last field to submit, since we're
   // intentionally not using a native <form> tag in this artifact.
   const handleEnterKey = (e) => {
@@ -78,8 +108,8 @@ export default function SimpleShopAuth() {
                 <img src={logo} alt="SimpleShop" className="h-9 w-auto" />
           ------------------------------------------------------------------- */}
           <img
-            src="https://placehold.co/168x44/0C0F0D/FFFFFF?text=SS+SimpleShop&font=raleway"
-            alt="SimpleShop logo placeholder — replace with your real logo"
+            src="images/2_title.png"
+            alt="Simple-shop logo"
             className="h-10 w-auto mb-10"
           />
 
@@ -238,7 +268,7 @@ export default function SimpleShopAuth() {
           {/* This paragraph is the "about the project" blurb, standing in
               for MongoDB's marketing copy in the reference screenshot. */}
           <p className="text-gray-300 text-[15px] leading-relaxed mb-8">
-            Hey, I'm Rajvardhan 👋 — this is a MERN-stack project I built
+            Hey, I'm Rajvardhan this is a MERN-stack project I built
             end-to-end: React on the front end, Node.js and Express powering
             the API layer, and MongoDB handling persistence, with JWT-based
             authentication and bcrypt password hashing behind the form

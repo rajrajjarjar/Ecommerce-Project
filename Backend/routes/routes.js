@@ -9,8 +9,8 @@ const {
 const { register, login } = require('../controllers/login');
 
 router.route('/').get(authIT, getAllProducts);
-router.route('/addToCart').post(addToCart)
-router.route('/register').post(register)
-router.route('/login').post(login);
+router.route('/addToCart').post(authIT, addToCart)
+router.route('/auth/register').post(register)
+router.route('/auth/login').post(login);
 
 module.exports = router;
