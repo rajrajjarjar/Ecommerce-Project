@@ -1,6 +1,3 @@
-<Link className="orders-link header-link" to="/orders">
-                    <span className="orders-text">Orders</span>
-                </Link>
 
                 <Link className="cart-link header-link" to="/checkout">
                     <img

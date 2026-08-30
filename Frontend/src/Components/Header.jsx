@@ -1,13 +1,9 @@
-import { Link } from 'react-router'
-import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { Link } from 'react-router';
+import { Right_side } from './right_side';
 import './header.css'
 
 function Header() {
-    const [mode, setMode] = useState("login");
-    const isLogin = mode === "login";
-    const token = localStorage.getItem("token");
-    const navigate = useNavigate();
+
 
     return (
         <div className="header">
@@ -37,7 +33,7 @@ function Header() {
             </div>
 
             <div className="right-section">
-                <button></button>
+                <Right_side></Right_side>
 
 
 

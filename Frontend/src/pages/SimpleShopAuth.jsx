@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Eye, EyeOff, ArrowRight, ShoppingBag, ShieldCheck } from "lucide-react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from '../Components/AuthContext';
 
 
 // ============================================================================
@@ -22,7 +23,7 @@ import { useNavigate } from "react-router-dom";
 // ============================================================================
 
 export default function SimpleShopAuth() {
-  // "login" | "register" — controls which form fields + copy are shown.
+  const { login } = useAuth(); // pull login() from context
   const [mode, setMode] = useState("login");
   const isLogin = mode === "login";
   const navigate = useNavigate();
@@ -51,10 +52,9 @@ export default function SimpleShopAuth() {
           }
         );
 
-        localStorage.setItem("token", response.data.token);
-        console.log("login, its done bro");
 
-        // Navigate to the homepage
+        login(response.data.token);
+
         navigate("/");
 
       } else {
