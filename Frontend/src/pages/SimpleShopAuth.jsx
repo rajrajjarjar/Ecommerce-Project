@@ -45,7 +45,7 @@ export default function SimpleShopAuth() {
     try {
       if (isLogin) {
         const response = await axios.post(
-          "http://localhost:3000/api/v1/auth/login",
+          `${import.meta.env.VITE_API_URL}/api/v1/auth/login`,
           {
             Email: form.email,
             password: form.password
@@ -59,7 +59,7 @@ export default function SimpleShopAuth() {
 
       } else {
         const response = await axios.post(
-          "http://localhost:3000/api/v1/auth/register", // Note: make sure this matches your backend route exactly
+          ` ${import.meta.env.VITE_API_URL}/api/v1/auth/register`, // Note: make sure this matches your backend route exactly
           {
             name: form.name,
             Email: form.email,

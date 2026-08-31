@@ -14,7 +14,7 @@ function Homepage() {
 
     // Fetch real products from your DB on mount
     useEffect(() => {
-        axios.get("http://localhost:3000/api/v1/products")
+        axios.get(`${import.meta.env.VITE_API_URL}/api/v1/products`)
             .then(res => setProducts(res.data))
             .catch(err => console.log(err));
     }, []);
@@ -35,7 +35,7 @@ function Homepage() {
 
         try {
             const response = await axios.post(
-                "http://localhost:3000/api/v1/addToCart",
+                `${import.meta.env.VITE_API_URL}/api/v1/addToCart`,
                 {
                     product: productId, // now a real Mongo ObjectId
                     quantity: quantity
