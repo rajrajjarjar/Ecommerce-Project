@@ -4,8 +4,7 @@ const { unauthanticated } = require('../errors/index_error');
 
 const authIT = async (req, res, next) => {
     const authHeader = req.headers.authorization;
-    console.log(req.headers.authorization)
-    console.log("AUTH HEADER:", authHeader);
+
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
         throw new unauthanticated('no token provided');
     }

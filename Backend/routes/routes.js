@@ -8,7 +8,7 @@ const {
 } = require('../controllers/methods')
 const { register, login } = require('../controllers/login');
 
-router.route('/').get(authIT, getAllProducts);
+router.route('/products').get(getAllProducts);
 router.route('/addToCart').post(authIT, addToCart)
 router.route('/auth/register').post(register)
 router.route('/auth/login').post(login);
