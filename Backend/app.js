@@ -45,7 +45,7 @@ app.use(notFound);
 const start = async () => {
     try {
         await connectDb(process.env.MONGODB_URI);
-        app.listen(3000, () => {
+        app.listen(process.env.PORT || 3000, () => {
             console.log(" superr saiyannnnn Independentttttt");
         })
 
